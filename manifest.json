@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "OpenMU Auto Reset",
+  "version": "1.0.0",
+  "description": "Resets the character automatically when it reaches level 400 on open.mu.",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["https://open.mu/*"],
+  "action": {
+    "default_title": "OpenMU Auto Reset options",
+    "default_popup": "src/popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://open.mu/*"],
+      "js": [
+        "src/settings.js",
+        "src/content/dom.js",
+        "src/content/history.js",
+        "src/content/rewards-menu.js",
+        "src/content/routines/watchdog.js",
+        "src/content/routines/reset.js",
+        "src/content/routines/rewards.js",
+        "src/content/routines/missions.js",
+        "src/content/routines/helper.js",
+        "src/content/content.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://open.mu/*"],
+      "js": [
+        "src/settings.js",
+        "src/page/game.js",
+        "src/page/monster-names.js",
+        "src/page/scope.js",
+        "src/page/monsters.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ]
+}
