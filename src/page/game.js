@@ -37,6 +37,18 @@ globalThis.__openmuGame = (() => {
     warp(index) {
       exported('_MuWebRequestWarp')?.(index);
     },
+    // Sends a chat line, as the game's own windows do for their slash commands. Returns false when
+    // nothing was sent, e.g. during the chat's one-second cooldown.
+    chat(line) {
+      const submit = exported('_MuWebSubmitChatUtf8');
+      if (!submit || typeof window.muAllocateUtf8 !== 'function') return false;
+      const pointer = window.muAllocateUtf8(line);
+      try {
+        return submit(pointer, 0, 0) === 1;
+      } finally {
+        window.Module._free(pointer);
+      }
+    },
   };
 
   // Keep the last character until another one enters.

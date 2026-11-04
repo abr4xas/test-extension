@@ -26,7 +26,7 @@ _Avoid_: teleport, move
 ## What the extension does
 
 **Routine**:
-One chore the extension runs on its own, switched on and off from the popup. The routines are, in priority order: Watchdog, Reset, Rewards, Missions and Helper. Only one acts at a time.
+One chore the extension runs on its own, switched on and off from the popup. The routines are, in priority order: Watchdog, Reset, Rewards, Missions, Jewel bank and Helper. Only one acts at a time.
 _Avoid_: task, job, handler
 
 **Watchdog**:
@@ -41,6 +41,10 @@ The jewel granted every 2 hours online, claimed by its routine once its timer ru
 
 **Missions**:
 The game's mission rewards, claimed by their routine as missions finish.
+
+**Jewel bank**:
+The account's jewel storage, shared between characters, and the routine that moves the inventory's jewels into it once the inventory is full.
+_Avoid_: vault, warehouse
 
 **History**:
 What the extension did for each Hero over the last day: Resets, Watchdog restarts, MU Helper restarts and claims.

@@ -5,6 +5,7 @@ const OPENMU_SETTINGS = [
   { key: 'autoHelper', label: 'Keep the MU Helper running' },
   { key: 'autoRewards', label: 'Claim the 2-hour reward' },
   { key: 'autoMissions', label: 'Claim mission rewards' },
+  { key: 'autoJewelBank', label: 'Send jewels to the bank when the inventory is full' },
   { key: 'summaryPanel', label: 'Show reset summary' },
   { key: 'monstersPanel', label: 'Show monsters in range' },
   { key: 'invasionAlert', label: 'Alert on Golden and Blue Dragon' },

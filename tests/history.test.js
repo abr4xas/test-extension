@@ -32,6 +32,7 @@ test('an empty history summarizes to zeros', () => {
     helperRestarts: 0,
     rewardsClaimed: 0,
     missionsClaimed: 0,
+    jewelBankTransfers: 0,
   });
 });
 

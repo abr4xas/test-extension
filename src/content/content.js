@@ -4,7 +4,7 @@ const CHECK_EVERY_MS = 5000;
 const SUMMARY_WINDOW_MS = 12 * 60 * 60 * 1000;
 
 // In priority order. A routine's run() resolves true when it used the tick, which ends it.
-const ROUTINES = [watchdogRoutine, resetRoutine, rewardsRoutine, missionsRoutine, helperRoutine];
+const ROUTINES = [watchdogRoutine, resetRoutine, rewardsRoutine, missionsRoutine, jewelBankRoutine, helperRoutine];
 
 let busy = false;
 let settings = { ...OPENMU_DEFAULTS };
@@ -60,6 +60,7 @@ function renderSummary() {
     `Helper restarts: ${summary.helperRestarts}`,
     `Rewards claimed: ${summary.rewardsClaimed}`,
     `Missions claimed: ${summary.missionsClaimed}`,
+    `Jewel bank transfers: ${summary.jewelBankTransfers}`,
   );
   panel.textContent = lines.join('\n');
 }

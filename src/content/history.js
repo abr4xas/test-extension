@@ -14,7 +14,7 @@ function createHistory(storage, now = () => Date.now()) {
   }
 
   return {
-    // type is one of 'reset', 'watchdog', 'helper', 'reward' or 'mission'.
+    // type is one of 'reset', 'watchdog', 'helper', 'reward', 'mission' or 'jewelBank'.
     record(type, hero) {
       const at = now();
       const events = load().filter((event) => at - event.at < KEEP_MS);
@@ -35,6 +35,7 @@ function createHistory(storage, now = () => Date.now()) {
         helperRestarts: count('helper'),
         rewardsClaimed: count('reward'),
         missionsClaimed: count('mission'),
+        jewelBankTransfers: count('jewelBank'),
       };
     },
   };
