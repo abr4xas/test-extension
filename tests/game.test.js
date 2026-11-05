@@ -71,6 +71,44 @@ test('publishes the hero and keeps it through the character selection screen', (
   assert.equal(dataset.openmuHero, 'Hero');
 });
 
+test('publishes the scene', () => {
+  let scene = 4;
+  const { publishHero, dataset } = loadGame(fakeModule({ _MuWebGetSceneFlag: () => scene }));
+  publishHero();
+  assert.equal(dataset.openmuScene, '4');
+  scene = 5;
+  publishHero();
+  assert.equal(dataset.openmuScene, '5');
+});
+
+// Slots 0 and 2 hold characters; the rest are empty.
+const characterSelection = (calls) => fakeModule({
+  _MuWebCharSelSlotUsed: (slot) => (slot === 0 || slot === 2 ? 1 : 0),
+  _MuWebCharSelNameUtf8: (slot) => ['Kiran', '', 'SMMomo'][slot],
+  _MuWebCharSelSelect: (slot) => calls.push(['select', slot]),
+  _MuWebCharSelEnter: () => calls.push(['enter']),
+});
+
+test('lists the characters on the selection screen by slot', () => {
+  const { game } = loadGame(characterSelection([]));
+  assert.deepEqual(plain(game.characters()), [{ slot: 0, name: 'Kiran' }, { slot: 2, name: 'SMMomo' }]);
+});
+
+test('enters the game with a character picked by name', () => {
+  const calls = [];
+  const { game } = loadGame(characterSelection(calls));
+  assert.equal(game.enterCharacter('SMMomo'), true);
+  assert.deepEqual(calls, [['select', 2], ['enter']]);
+});
+
+test('does nothing for a character that is not on the selection screen', () => {
+  const calls = [];
+  const { game } = loadGame(characterSelection(calls));
+  assert.equal(game.enterCharacter('Nobody'), false);
+  assert.deepEqual(calls, []);
+  assert.deepEqual(plain(loadGame(undefined).game.characters()), []);
+});
+
 test('the game loading later is picked up', () => {
   const { game, window } = loadGame(undefined);
   assert.equal(game.mapIndex(), null);

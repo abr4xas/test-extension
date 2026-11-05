@@ -14,7 +14,7 @@ function createHistory(storage, now = () => Date.now()) {
   }
 
   return {
-    // type is one of 'reset', 'watchdog', 'helper', 'reward', 'mission' or 'jewelBank'.
+    // type is one of 'reset', 'watchdog', 'reconnect', 'helper', 'reward', 'mission' or 'jewelBank'.
     record(type, hero) {
       const at = now();
       const events = load().filter((event) => at - event.at < KEEP_MS);
@@ -32,6 +32,7 @@ function createHistory(storage, now = () => Date.now()) {
         lastResetAt: resets.at(-1) ?? null,
         minutesBetweenResets: resets.length > 1 ? (resets.at(-1) - resets[0]) / (resets.length - 1) / 60000 : null,
         gameRestarts: count('watchdog'),
+        reconnections: count('reconnect'),
         helperRestarts: count('helper'),
         rewardsClaimed: count('reward'),
         missionsClaimed: count('mission'),

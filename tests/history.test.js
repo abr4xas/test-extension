@@ -29,6 +29,7 @@ test('an empty history summarizes to zeros', () => {
     lastResetAt: null,
     minutesBetweenResets: null,
     gameRestarts: 0,
+    reconnections: 0,
     helperRestarts: 0,
     rewardsClaimed: 0,
     missionsClaimed: 0,

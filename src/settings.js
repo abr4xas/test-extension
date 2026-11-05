@@ -2,6 +2,7 @@
 const OPENMU_SETTINGS = [
   { key: 'autoReset', label: 'Auto reset at level 400' },
   { key: 'autoRestart', label: 'Restart the game when it hangs' },
+  { key: 'autoReconnect', label: 'Sign in again when the game disconnects' },
   { key: 'autoHelper', label: 'Keep the MU Helper running' },
   { key: 'autoRewards', label: 'Claim the 2-hour reward' },
   { key: 'autoMissions', label: 'Claim mission rewards' },

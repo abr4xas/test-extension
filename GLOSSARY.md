@@ -26,11 +26,15 @@ _Avoid_: teleport, move
 ## What the extension does
 
 **Routine**:
-One chore the extension runs on its own, switched on and off from the popup. The routines are, in priority order: Watchdog, Reset, Rewards, Missions, Jewel bank and Helper. Only one acts at a time.
+One chore the extension runs on its own, switched on and off from the popup. The routines are, in priority order: Watchdog, Reconnect, Reset, Rewards, Missions, Jewel bank and Helper. Only one acts at a time.
 _Avoid_: task, job, handler
 
 **Watchdog**:
 The game's "stopped responding" screen, and the routine that restarts the game from it.
+
+**Reconnect**:
+Bringing the Hero back into the game after the connection drops: signing in again, choosing the server and entering with the same Hero. Not done when the game continued on another device.
+_Avoid_: relog, reconnection
 
 **MU Helper**:
 The game's own auto-attack, which the Helper routine keeps running unless the player stopped it.

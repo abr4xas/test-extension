@@ -18,6 +18,7 @@
         "src/content/history.js",
         "src/content/rewards-menu.js",
         "src/content/routines/watchdog.js",
+        "src/content/routines/reconnect.js",
         "src/content/routines/reset.js",
         "src/content/routines/rewards.js",
         "src/content/routines/missions.js",
